@@ -5,15 +5,7 @@
     <main class="container relative px-4 mx-auto bg-white">
       <div class="relative -mx-4 top-0 pt-[17%] overflow-hidden">
         <img
-          class="
-            absolute
-            inset-0
-            object-cover object-top
-            w-full
-            h-full
-            filter
-            blur
-          "
+          class="absolute inset-0 object-cover object-top w-full h-full  filter blur"
           :src="data[0].image.url"
           :alt="data[0].title"
         />
@@ -34,7 +26,11 @@
         <h1 class="text-2xl font-bold">
           {{ data[0].title }}
         </h1>
-        <h2 class="mt-2 text-sm text-gray-500">{{ data[0].date }}</h2>
+        <vue-markdown
+          class="markdown"
+          :source="`[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${url}&count_bg=%233D6FC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false)]()`"
+        />
+        <h2 class="mt-2 text-sm text-gray-500">Posted on {{ data[0].date }}</h2>
         <vue-markdown class="markdown" :source="data[0].content" />
       </article>
     </main>
@@ -58,6 +54,7 @@ export default {
     }
     return {
       data,
+      url: `${process.env.base}/blog/${params.blog_slug}`,
     }
   },
 }
