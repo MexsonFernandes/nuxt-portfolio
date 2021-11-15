@@ -3,7 +3,10 @@
     <nuxt-link to="/blog" class="text-sm text-blue-400">Go Back</nuxt-link
     ><br />
     <main class="container relative px-4 mx-auto bg-white">
-      <div class="relative -mx-4 top-0 pt-[17%] overflow-hidden">
+      <div
+        v-if="data[0].image"
+        class="relative -mx-4 top-0 pt-[17%] overflow-hidden"
+      >
         <img
           class="absolute inset-0 object-cover object-top w-full h-full  filter blur"
           :src="data[0].image.url"
@@ -11,7 +14,7 @@
         />
       </div>
 
-      <div class="mt-[-10%] w-1/2 mx-auto">
+      <div v-if="data[0].image" class="mt-[-10%] w-1/2 mx-auto">
         <div class="relative pt-[56.25%] overflow-hidden rounded-2xl">
           {{ data[0].image.url }}
           <img
@@ -30,7 +33,9 @@
           class="markdown"
           :source="`[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${url}&count_bg=%233D6FC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false)]()`"
         />
-        <h2 class="mt-2 text-sm text-gray-500">Posted on {{ data[0].date }}</h2>
+        <h2 v-if="data[0].date" class="mt-2 text-sm text-gray-500">
+          Posted on {{ parseTime(data[0].date) }}
+        </h2>
         <vue-markdown class="markdown" :source="data[0].content" />
       </article>
     </main>
@@ -39,6 +44,7 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
+import { format } from 'date-fns'
 
 export default {
   components: {
@@ -56,6 +62,15 @@ export default {
       data,
       url: `${process.env.base}/blog/${params.blog_slug}`,
     }
+  },
+  methods: {
+    parseTime(date) {
+      try {
+        return format(new Date(date), 'dd MMM yyyy')
+      } catch (e) {
+        return ''
+      }
+    },
   },
 }
 </script>
