@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-portfolio',
+    title: 'Mexson Fernandes',
     htmlAttrs: {
       lang: 'en',
     },
@@ -36,5 +36,12 @@ export default {
 
   env: {
     base: process.env.BASE_URL || 'https://api.mexsonfernandes.com',
+  },
+
+  modules: ['@nuxtjs/sitemap'],
+
+  sitemap: {
+    hostname: 'https://mexsonfernandes.com',
+    gzip: true,
   },
 }
