@@ -38,10 +38,15 @@ export default {
     base: process.env.BASE_URL || 'https://api.mexsonfernandes.com',
   },
 
-  modules: ['@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/sitemap', 'vue-plausible'],
 
   sitemap: {
     hostname: 'https://mexsonfernandes.com',
     gzip: true,
+  },
+
+  plausible: {
+    domain: 'mexsonfernandes.com',
+    apiHost: 'https://analytics.preflet.com',
   },
 }
