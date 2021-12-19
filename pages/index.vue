@@ -1,14 +1,16 @@
 <template>
-  <div class="m-5">
+  <div class="mt-5">
     <div class="sticky top-0 w-full text-black bg-white">
-      <div class="mt-0 mb-2 text-5xl">
-        <span>Mexson</span>&nbsp;<span class="text-blue-600">Fernandes</span>
-      </div>
-      <div class="text-2xl">
-        <span>RoboMex</span>
+      <div class="mt-0 text-5xl">
+        <div>Mexson</div>
+        <div class="text-blue-900">Fernandes</div>
       </div>
       <br />
-      <div class="flex flex-wrap space-x-4">
+      <div class="text-2xl">
+        <div>RoboMex</div>
+      </div>
+      <br />
+      <div>
         <button class="inline-flex items-center px-4 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +24,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span> Goa, India</span>
+          <div>Goa, India</div>
         </button>
 
         <button class="inline-flex items-center px-4 py-2">
@@ -36,7 +38,7 @@
               d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
             />
           </svg>
-          <span> <a href="tel:+91 8007503717">+91 8007503717</a></span>
+          <div><a href="tel:+91 8007503717">+91 8007503717</a></div>
         </button>
         <button class="inline-flex items-center px-4 py-2">
           <svg
@@ -51,14 +53,12 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span>
-            <a href="mailto: robomex2020@gmail.com"
-              >robomex2020@gmail.com</a
-            ></span
-          >
+          <div>
+            <a href="mailto: robomex2020@gmail.com">robomex2020@gmail.com</a>
+          </div>
         </button>
       </div>
-      <div class="flex">
+      <div class="grid grid-cols-4 gap-4 lg:grid-cols-10">
         <a
           v-for="link in links"
           :key="`${link.icon}-data`"

@@ -1,12 +1,12 @@
 <template>
   <div class="ml-5">
     <page-header title="Skills"></page-header>
-    <div v-for="section in skills" :key="`${section._id}-data`">
+    <div v-for="section in skills" :key="`${section.title}-data-outer`">
       <div class="mb-3 subheading">{{ section.title }}</div>
       <div class="flex flex-wrap">
         <div
           v-for="icon in section.data"
-          :key="`${icon._id}-data`"
+          :key="`${icon.name}-data-inner`"
           class="w-12 m-1 flex-4 has-tooltip"
         >
           <span class="p-1 -mt-8 bg-gray-100 rounded shadow-lg tooltip">{{
