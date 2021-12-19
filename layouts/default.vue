@@ -29,7 +29,7 @@
     </div>
 
     <div class="flex flex-1 overflow-hidden">
-      <div class="flex-1 overflow-y-scroll">
+      <div id="main-item" class="flex-1 overflow-y-scroll">
         <nav class="bg-gray-800 md:invisible">
           <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
@@ -124,6 +124,26 @@
         <nuxt class="ml-5" />
       </div>
     </div>
+    <div id="goTop">
+      <div
+        v-if="showGoUpTop"
+        class="fixed float-right p-2 text-center bg-gray-200 cursor-pointer  right-5 bottom-5"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-5 feather feather-chevrons-up"
+        >
+          <polyline points="17 11 12 6 7 11"></polyline>
+          <polyline points="17 18 12 13 7 18"></polyline>
+        </svg>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -160,7 +180,23 @@ export default {
         },
       ],
       showHideMenu: false,
+      showGoUpTop: false,
     }
+  },
+  mounted() {
+    const mainItem = document.getElementById('main-item')
+    mainItem.addEventListener('scroll', () => {
+      if (mainItem.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        this.showGoUpTop = true
+      } else {
+        this.showGoUpTop = false
+      }
+    })
+    const goTop = document.querySelector('#goTop')
+    goTop.addEventListener('click', (e) => {
+      e.preventDefault()
+      mainItem.scroll({ top: 0, left: 0, behavior: 'smooth' })
+    })
   },
   methods: {
     toggleMenu() {
