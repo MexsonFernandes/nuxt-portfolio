@@ -47,6 +47,6 @@ export default {
 
   plausible: {
     domain: 'mexsonfernandes.com',
-    apiHost: 'https://analytics.preflet.com',
+    apiHost: 'https://plausible.io',
   },
 }
