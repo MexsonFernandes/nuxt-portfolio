@@ -49,4 +49,7 @@ export default {
     domain: 'mexsonfernandes.com',
     apiHost: 'https://plausible.io',
   },
+  generate: {
+    fallback: true
+  }
 }
