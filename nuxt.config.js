@@ -38,16 +38,20 @@ export default {
     base: process.env.BASE_URL || 'https://api.mexsonfernandes.com',
   },
 
-  modules: ['@nuxtjs/sitemap', 'vue-plausible'],
+  modules: ['@nuxtjs/sitemap', 'nuxt-umami'],
 
   sitemap: {
     hostname: 'https://mexsonfernandes.com',
     gzip: true,
   },
 
-  plausible: {
-    domain: 'mexsonfernandes.com',
-    apiHost: 'https://plausible.io',
+  umami: {
+    autoTrack: true,
+    doNotTrack: false,
+    cache: false,
+    domains: 'mexsonfernandes.com',
+    websiteId: 'a8799e7d-0c96-4bcd-879a-7c6d0c58c001',
+    scriptUrl: 'https://analytics.robomx.com/umami.js',
   },
   generate: {
     fallback: true
