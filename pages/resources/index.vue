@@ -1,6 +1,6 @@
 <template>
   <div class="ml-5">
-    <page-header title="Blog"></page-header>
+    <page-header title="Resources"></page-header>
     <div class="overflow-x-hidden">
       <div class="px-6 py-8">
         <div class="container flex justify-between mx-auto">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="mt-2">
                   <nuxt-link
-                    :to="`/blog/${article.slug}`"
+                    :to="`/resources/${article.slug}`"
                     class="text-2xl font-bold text-gray-700 hover:underline"
                     >{{ article.title }}</nuxt-link
                   >
@@ -35,7 +35,7 @@
                 </div>
                 <div class="flex items-center justify-between mt-4">
                   <nuxt-link
-                    :to="`/blog/${article.slug}`"
+                    :to="`/resources/${article.slug}`"
                     class="text-blue-500 hover:underline"
                     >Read more</nuxt-link
                   >

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link to="/blog" class="text-sm text-blue-400">Go Back</nuxt-link
+    <nuxt-link to="/resources" class="text-sm text-blue-400">Go Back</nuxt-link
     ><br />
     <main class="container relative px-4 mx-auto bg-white">
       <div
@@ -56,11 +56,11 @@ export default {
     ).json()
 
     if (data.length && data.length === 0) {
-      redirect('/blog')
+      redirect('/resources')
     }
     return {
       data,
-      url: `${process.env.base}/blog/${params.blog_slug}`,
+      url: `${process.env.base}/resources/${params.blog_slug}`,
     }
   },
   methods: {

@@ -114,7 +114,7 @@ export default {
           icon: 'youtube.svg',
         },
         {
-          src: 'https//www.quora.com/profile/Mexson-Fernandes-1',
+          src: 'https://www.quora.com/profile/Mexson-Fernandes-1',
           icon: 'quora.svg',
         },
       ],

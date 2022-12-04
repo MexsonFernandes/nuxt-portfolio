@@ -10,16 +10,17 @@
       </div>
       <ul class="flex flex-col py-4">
         <li v-for="(tab, index) in tabs" :key="`tab-${index}-desktop`">
-          <NuxtLink
-            :to="tab.route"
-            class="flex flex-row items-center h-12 text-gray-500 transition-transform duration-200 ease-in transform  hover:translate-x-2 hover:text-gray-800"
+          <div
+          @click="navigateTab(tab.route, tab.external)"
+            :target="tab.external? '_blank': '_self'"
+            class="cursor-pointer flex flex-row items-center h-12 text-gray-500 transition-transform duration-200 ease-in transform  hover:translate-x-2 hover:text-gray-800"
           >
             <span
               class="inline-flex items-center justify-center w-12 h-12 text-lg text-gray-400 "
               ><i class="bx bx-home"></i
             ></span>
             <span class="text-sm font-medium">{{ tab.name }}</span>
-          </NuxtLink>
+          </div>
         </li>
       </ul>
 
@@ -108,15 +109,15 @@
           <div v-if="showHideMenu">
             <div class="px-2 pt-2 pb-3 space-y-1">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <NuxtLink
+              <div
                 v-for="(tab, index) in tabs"
                 :key="`tab-${index}-mobile`"
-                :to="tab.route"
-                :class="`block px-3 py-2 text-base font-medium text-white  rounded-md ${getActiveTab(
+                @click="navigateTab(tab.route, tab.external)"
+                :class="`cursor-pointer block px-3 py-2 text-base font-medium text-white  rounded-md ${getActiveTab(
                   index
                 )}`"
-                @click.native="hideMenu()"
-                >{{ tab.name }}</NuxtLink
+                @click.prevent="hideMenu()"
+                >{{ tab.name }}</div
               >
             </div>
           </div>
@@ -175,8 +176,13 @@ export default {
           name: 'Interests',
         },
         {
-          route: '/blog',
+          route: '/resources',
+          name: 'Resources',
+        },
+        {
+          route: 'https://blog.mexsonfernandes.com',
           name: 'Blog',
+          external: true
         },
       ],
       showHideMenu: false,
@@ -199,6 +205,16 @@ export default {
     })
   },
   methods: {
+    navigateTab(route, external) {
+      if (external) {
+        window.open(
+          route,
+          '_blank'
+        );
+      } else {
+        this.$router.push(route)
+      }
+    },
     toggleMenu() {
       this.showHideMenu = !this.showHideMenu
     },
