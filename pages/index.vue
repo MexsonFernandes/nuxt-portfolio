@@ -102,7 +102,7 @@ export default {
           icon: 'twitter.svg',
         },
         {
-          src: 'https://www.instagram.com/robomex.official/',
+          src: 'https://www.instagram.com/robomex.tv',
           icon: 'instagram.svg',
         },
         {
