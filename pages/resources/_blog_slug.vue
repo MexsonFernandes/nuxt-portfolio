@@ -3,40 +3,19 @@
     <nuxt-link to="/resources" class="text-sm text-blue-400">Go Back</nuxt-link
     ><br />
     <main class="container relative px-4 mx-auto bg-white">
-      <div
-        v-if="data[0].image"
-        class="relative -mx-4 top-0 pt-[17%] overflow-hidden"
-      >
-        <img
-          class="absolute inset-0 object-cover object-top w-full h-full  filter blur"
-          :src="data[0].image.url"
-          :alt="data[0].title"
-        />
-      </div>
-
-      <div v-if="data[0].image" class="mt-[-10%] w-1/2 mx-auto">
-        <div class="relative pt-[56.25%] overflow-hidden rounded-2xl">
-          {{ data[0].image.url }}
-          <img
-            class="absolute inset-0 object-cover w-full h-full"
-            :src="data[0].image.url"
-            :alt="data[0].title"
-          />
-        </div>
-      </div>
 
       <article class="py-8 mx-auto max-w-prose">
         <h1 class="text-2xl font-bold">
-          {{ data[0].title }}
+          {{ data.name }}
         </h1>
         <vue-markdown
           class="markdown"
           :source="`[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${url}&count_bg=%233D6FC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false)]()`"
         />
-        <h2 v-if="data[0].date" class="mt-2 text-sm text-gray-500">
-          Posted on {{ parseTime(data[0].date) }}
+        <h2 v-if="data.date" class="mt-2 text-sm text-gray-500">
+          Posted on {{ parseTime(data.actual_uploaded) }}
         </h2>
-        <vue-markdown class="markdown" :source="data[0].content" />
+        <vue-markdown class="markdown" :source="data.content" />
       </article>
     </main>
   </div>
@@ -51,16 +30,24 @@ export default {
     'vue-markdown': VueMarkdown,
   },
   async asyncData({ params, redirect }) {
-    const data = await (
-      await fetch(`${process.env.base}/articles?slug=${params.blog_slug}`)
-    ).json()
-
+    console.log(params)
+    const url = params.blog_slug
+    params.blog_slug = url.replace(new RegExp('-', "g"), ' ')
+    console.log(params)
+    const data = (await (
+      await fetch(`${process.env.base}/items/Resources?filter[name][_eq]=${params.blog_slug}`, {
+        headers: { 
+          'Authorization': `Bearer ${process.env.token}`
+        }
+      })
+    ).json()).data
+    console.log(data)
     if (data.length && data.length === 0) {
       redirect('/resources')
     }
     return {
-      data,
-      url: `${process.env.base}/resources/${params.blog_slug}`,
+      data: data[0],
+      url: `${process.env.base}/resources/${url}`,
     }
   },
   methods: {

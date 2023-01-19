@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -35,7 +37,8 @@ export default {
   ],
 
   env: {
-    base: process.env.BASE_URL || 'https://api.mexsonfernandes.com',
+    base: process.env.REST_API_ENDPOINT || 'https://manage.mexsonfernandes.com',
+    token: process.env.REST_API_TOKEN
   },
 
   modules: ['@nuxtjs/sitemap', 'nuxt-umami'],

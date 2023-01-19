@@ -7,7 +7,7 @@
           <div class="w-full lg:w-8/12">
             <div
               v-for="article in articles"
-              :key="`${article._id}-data`"
+              :key="`${article.id}-data`"
               class="mt-6"
             >
               <div
@@ -15,22 +15,22 @@
               >
                 <div class="flex items-center justify-between">
                   <span class="font-light text-gray-600">{{
-                    parseTime(article.date)
+                    parseTime(article.actual_uploaded)
                   }}</span
                   ><a
                     href="#"
                     class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded  hover:bg-gray-500"
-                    >{{ article.category.name }}</a
+                    >{{ article.type }}</a
                   >
                 </div>
                 <div class="mt-2">
                   <nuxt-link
                     :to="`/resources/${article.slug}`"
                     class="text-2xl font-bold text-gray-700 hover:underline"
-                    >{{ article.title }}</nuxt-link
+                    >{{ article.name }}</nuxt-link
                   >
                   <p class="mt-2 text-gray-600">
-                    {{ article.description }}
+                    {{ article.brief }}
                   </p>
                 </div>
                 <div class="flex items-center justify-between mt-4">
@@ -51,14 +51,14 @@
               >
                 <ul>
                   <li
-                    v-for="category in categories"
-                    :key="`${category._id}-category`"
+                    v-for="(category, index) in categories"
+                    :key="`${index}-category`"
                     class="flex items-center mt-2"
                   >
                     <nuxt-link
                       to="#"
                       class="mx-1 font-bold text-gray-700  hover:text-gray-600 hover:underline"
-                      >- {{ category.name }}</nuxt-link
+                      >- {{ category }}</nuxt-link
                     >
                   </li>
                 </ul>
@@ -77,14 +77,25 @@ import { format } from 'date-fns'
 export default {
   async asyncData() {
     const articleRes = await fetch(
-      `${process.env.base}/articles?_sort=date:DESC`
+      `${process.env.base}/items/Resources?sort=-actual_uploaded&filter[status][_eq]=published`, {
+        headers: { 
+          'Authorization': `Bearer ${process.env.token}`
+        }
+      }
     )
-    const categoryRes = await fetch(
-      `${process.env.base}/categories?_sort=date:DESC`
-    )
+    const articles = (await articleRes.json()).data
+    console.log(articles)
+    const categories = new Set();
+    articles.map((a) => {
+      categories.add(a.type)
+
+      // create slug
+      a.slug = a.name.replace(new RegExp(' ', "g"), '-')
+    })
+
     return {
-      articles: await articleRes.json(),
-      categories: await categoryRes.json(),
+      articles,
+      categories: Array.from(categories),
     }
   },
   methods: {
