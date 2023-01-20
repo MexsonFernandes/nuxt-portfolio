@@ -18,7 +18,7 @@
       >
         <div
           v-for="interest in interests"
-          :key="`${interest._id}-data`"
+          :key="`${interest.id}-data`"
           class="
             container
             max-w-md
@@ -30,11 +30,11 @@
             hover:shadow-2xl
           "
         >
-          <div class="max-w-screen-lg pb-10 mx-auto hero">
+          <div class="max-w-screen-lg mx-auto hero">
             <img
-              :src="`${interest.image.url}`"
-              :alt="`${interest.title}`"
-              class="w-48 h-48 mx-auto max-h-48 max-w-48"
+              :src="interest.icon_link"
+              :alt="`${interest.name}`"
+              class="h-48 mx-auto max-h-48"
             />
           </div>
           <div class="p-6">
@@ -49,10 +49,10 @@
                 hover:text-blue-600
               "
             >
-              {{ interest.title }}
+              {{ interest.name }}
             </h1>
             <p class="my-2 text-gray-700 hover-text-900">
-              {{ interest.description }}
+              {{ interest.brief }}
             </p>
           </div>
         </div>
@@ -64,11 +64,34 @@
 <script>
 export default {
   async asyncData() {
-    const res = await fetch(`${process.env.base}/interests`)
+    const res = await fetch(`${process.env.base}/items/Field_of_Interest`, {
+      headers: { 
+        'Authorization': `Bearer ${process.env.token}`
+      }
+    })
+    const interests = (await res.json()).data
+
+    for (var entry = 0; entry < interests.length; entry++) {
+      interests[entry].image = await (await fetch(`${process.env.base}/assets/${interests[entry].depiction}?download=true`, {
+        headers: { 
+          'Authorization': `Bearer ${process.env.token}`
+        }
+      })).blob()
+    }
+
     return {
-      interests: await res.json(),
+      interests,
     }
   },
+  mounted() {
+    if (process.browser) {
+      try {
+        console.log(this.interests)
+      } catch(e) {
+        console.log(e)
+      }
+    }
+  }
 }
 </script>
 

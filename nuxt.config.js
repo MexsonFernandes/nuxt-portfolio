@@ -45,7 +45,7 @@ export default {
 
   sitemap: {
     hostname: 'https://mexsonfernandes.com',
-    gzip: true,
+    gzip: true, 
   },
 
   umami: {
