@@ -1,13 +1,25 @@
 <template>
   <div>
     <page-header title="Work"></page-header>
-    <div class="flex-grow min-h-screen px-10 pt-12 pb-12 bg-white-100">
+    <div class="flex-grow min-h-screen px-10 bg-white-100">
+      <div
+        class="text-xs cursor-pointer inline-flex items-center font-bold leading-sm uppercase px-3 py-1 text-white rounded-full mr-2"
+        v-for="type in types"
+        :key="type.name"
+        :class="{ 'animate-pulse': activeFilter === type.name }"
+        :style="`background: ${type.color}`"
+        @click="filterByType(type.name)"
+      >
+        {{ type.name }}
+        &nbsp;<span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-black bg-white rounded-full"> {{ type.count }}</span>
+      </div>
       <div v-for="project in projects" :key="`${project.id}-data`" class="mt-5">
         <h3 class="mt-0 text-4xl font-normal leading-normal">
           {{ project.title }}
         </h3>
         <div
-          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full"
+          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 text-white rounded-full"
+          :style="`background: ${getBadgeColor(project.type)}`"
         >
           {{ project.type }}
         </div>
@@ -44,7 +56,11 @@
         </div>
 
         <div
-          v-if="project.contributors && project.contributors.length && project.contributors.length > 0"
+          v-if="
+            project.contributors &&
+            project.contributors.length &&
+            project.contributors.length > 0
+          "
         >
           <br />
           <span class="font-bold">Team</span>
@@ -54,7 +70,9 @@
               :key="`${user.id}-data`"
               class="m-1 flex-4 has-tooltip"
             >
-              <div class="relative flex flex-col items-center group cursor-pointer">
+              <div
+                class="relative flex flex-col items-center group cursor-pointer"
+              >
                 <!-- <div class="w-12 h-12">
                   <img
                     class="m-1 rounded-full grayscale hover:grayscale-0"
@@ -62,7 +80,9 @@
                     :src="`${base}/assets/${user.photo}`"
                   />
                 </div> -->
-                <a :href="user.linkedin || '#'" target="_blank">{{  user.name }}</a>
+                <a :href="user.linkedin || '#'" target="_blank">{{
+                  user.name
+                }}</a>
                 <!-- <div
                   class="absolute bottom-0 flex flex-col items-center hidden mb-12 group-hover:flex"
                 >
@@ -130,6 +150,10 @@ export default {
   components: {
     'vue-markdown': VueMarkdown,
   },
+  data: () => {
+    return {
+    }
+  },
   async asyncData() {
     const res = await fetch(
       `${process.env.base}/items/Projects?filter={"status": {"_eq": "Live"}}&fields=contributors.*,title,description,subtitle,type,github_link,web_link,skill_used.name&sort=-start`,
@@ -139,13 +163,50 @@ export default {
         },
       }
     )
+    const defaultFilterText = 'All'
     var projects = (await res.json()).data
-    console.log(projects)
+
+    var types = new Set()
+    types.add(defaultFilterText)
+    projects.map((p) => {
+      types.add(p.type)
+    })
+
+    const colors = ['#1e293b', '#06b6d4', '#65a30d', '#6366f1', '#ec4899']
+
+    // create the badges
+    types = Array.from(types)
+    console.log(types)
+    types.map((t, index) => {
+      types[index] = {
+        name: t,
+        color: colors[index],
+        count: t === defaultFilterText ? projects.length : projects.filter(p => p.type === t).length
+      }
+    })
+    console.log(types)
 
     return {
       projects,
-      base: process.env.REST_API_ENDPOINT
+      availableList: projects,
+      base: process.env.REST_API_ENDPOINT,
+      types,
+      activeFilter: defaultFilterText,
+      defaultFilterText
     }
+  },
+  methods: {
+    getBadgeColor(name) {
+      return this.types.find((t) => t.name === name).color
+    },
+    filterByType(name) {
+      this.activeFilter = name
+      if (name === this.defaultFilterText) {
+        this.projects = this.availableList
+      } else {
+        this.projects = this.availableList.filter((p) => p.type === name)
+      }
+    },
   },
 }
 </script>
