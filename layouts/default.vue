@@ -24,7 +24,7 @@
         </li>
       </ul>
 
-      <div class="grid place-items-center">
+      <div class="grid place-items-center" v-if="prod">
         <vue-markdown :source="hitCounter"> </vue-markdown>
       </div>
     </div>
@@ -185,6 +185,7 @@ export default {
           external: true
         },
       ],
+      prod: process.env.NODE_ENV === 'production',
       showHideMenu: false,
       showGoUpTop: false,
     }
