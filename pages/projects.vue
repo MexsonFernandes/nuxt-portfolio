@@ -2,14 +2,15 @@
   <div>
     <page-header title="Projects"></page-header>
     <div class="flex-grow min-h-screen px-10 pt-12 pb-12 bg-white-100">
-      <div
-        v-for="project in projects"
-        :key="`${project._id}-data`"
-        class="mt-5"
-      >
-        <h3 class="mt-0 mb-2 text-4xl font-normal leading-normal">
+      <div v-for="project in projects" :key="`${project.id}-data`" class="mt-5">
+        <h3 class="mt-0 text-4xl font-normal leading-normal">
           {{ project.title }}
         </h3>
+        <div
+          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full"
+        >
+          {{ project.type }}
+        </div>
         <h3 class="mt-0 mb-2 text-2xl font-normal leading-normal">
           <vue-markdown :source="project.subtitle" />
         </h3>
@@ -29,7 +30,7 @@
           <div class="flex flex-wrap">
             <div
               v-for="icon in project.Techstack"
-              :key="`${icon._id}-data`"
+              :key="`${icon.id}-data`"
               class="w-12 m-1 flex-4 has-tooltip"
             >
               <div class="relative flex flex-col items-center group">
@@ -41,28 +42,10 @@
                   />
                 </div>
                 <div
-                  class="
-                    absolute
-                    bottom-0
-                    flex flex-col
-                    items-center
-                    hidden
-                    mb-6
-                    group-hover:flex
-                  "
+                  class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex"
                 >
                   <span
-                    class="
-                      relative
-                      z-10
-                      p-2
-                      text-xs
-                      leading-none
-                      text-white
-                      whitespace-no-wrap
-                      bg-black
-                      shadow-lg
-                    "
+                    class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
                     >{{ icon.stack }}</span
                   >
                   <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
@@ -80,7 +63,7 @@
           <div class="flex flex-wrap">
             <div
               v-for="icon in project.Team"
-              :key="`${icon._id}-data`"
+              :key="`${icon.id}-data`"
               class="m-1 flex-4 has-tooltip"
             >
               <div class="relative flex flex-col items-center group">
@@ -92,28 +75,10 @@
                   />
                 </div>
                 <div
-                  class="
-                    absolute
-                    bottom-0
-                    flex flex-col
-                    items-center
-                    hidden
-                    mb-12
-                    group-hover:flex
-                  "
+                  class="absolute bottom-0 flex flex-col items-center hidden mb-12 group-hover:flex"
                 >
                   <span
-                    class="
-                      relative
-                      z-10
-                      p-1
-                      text-xs
-                      leading-none
-                      text-white
-                      whitespace-no-wrap
-                      bg-black
-                      shadow-lg
-                    "
+                    class="relative z-10 p-1 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
                     >{{ icon.photo.caption }}</span
                   >
                   <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
@@ -123,28 +88,32 @@
           </div>
         </div>
 
-        <div
-          v-if="
-            project.Action && project.Action.length && project.Action.length > 0
-          "
-        >
+        <div v-if="project.github_link || project.web_link">
           <br />
           <span class="font-bold">Links</span>
           <div class="flex flex-wrap">
-            <div
-              v-for="action in project.Action"
-              :key="`${action._id}-data`"
-              class="w-8 h-8 m-1 flex-4"
-            >
+            <div class="w-8 h-8 m-1 flex-4" v-if="project.github_link && project.open_source">
               <a
-                :aria-label="action.link"
+                :aria-label="project.github_link"
                 rel="noopener"
                 class="rounded-full"
                 target="_blank"
-                :href="action.link"
+                :href="project.github_link"
                 ><img
                   class="rounded-full grayscale hover:grayscale-0"
-                  :src="`${action.logo.url}`"
+                  src="~/assets/images/icons/github.svg"
+              /></a>
+            </div>
+            <div class="w-8 h-8 m-1 flex-4" v-if="project.web_link">
+              <a
+                :aria-label="project.web_link"
+                rel="noopener"
+                class="rounded-full"
+                target="_blank"
+                :href="project.web_link"
+                ><img
+                  class="rounded-full grayscale hover:grayscale-0"
+                  src="~/assets/images/icons/link.png"
               /></a>
             </div>
           </div>
@@ -170,9 +139,19 @@ export default {
     'vue-markdown': VueMarkdown,
   },
   async asyncData() {
-    const res = await fetch(`${process.env.base}/projects?_sort=started`)
+    const res = await fetch(
+      `${process.env.base}/items/Projects?filter={"status": {"_eq": "Live"}}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.token}`,
+        },
+      }
+    )
+    const projects = (await res.json()).data
+    console.log(projects)
+
     return {
-      projects: await res.json(),
+      projects,
     }
   },
 }
