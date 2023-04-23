@@ -164,8 +164,8 @@ export default {
           name: 'About',
         },
         {
-          route: '/projects',
-          name: 'Projects',
+          route: '/work',
+          name: 'Work',
         },
         {
           route: '/skills',

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header title="Projects"></page-header>
+    <page-header title="Work"></page-header>
     <div class="flex-grow min-h-screen px-10 pt-12 pb-12 bg-white-100">
       <div v-for="project in projects" :key="`${project.id}-data`" class="mt-5">
         <h3 class="mt-0 text-4xl font-normal leading-normal">
@@ -20,69 +20,58 @@
 
         <div
           v-if="
-            project.Techstack &&
-            project.Techstack.length &&
-            project.Techstack.length > 0
+            project.skill_used &&
+            project.skill_used.length &&
+            project.skill_used.length > 0
           "
         >
           <br />
           <span class="font-bold">Tech Stack</span>
           <div class="flex flex-wrap">
             <div
-              v-for="icon in project.Techstack"
-              :key="`${icon.id}-data`"
+              v-for="badge in project.skill_used"
+              :key="`${badge.name}-data`"
               class="w-12 m-1 flex-4 has-tooltip"
             >
               <div class="relative flex flex-col items-center group">
-                <div class="w-12 h-12">
-                  <img
-                    class="m-1 grayscale hover:grayscale-0"
-                    :alt="icon.stack"
-                    :src="icon.logo.url"
-                  />
-                </div>
-                <div
-                  class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex"
+                <span
+                  class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
+                  >#{{ badge.name }}</span
                 >
-                  <span
-                    class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
-                    >{{ icon.stack }}</span
-                  >
-                  <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div
-          v-if="project.Team && project.Team.length && project.Team.length > 0"
+          v-if="project.contributors && project.contributors.length && project.contributors.length > 0"
         >
           <br />
           <span class="font-bold">Team</span>
           <div class="flex flex-wrap">
             <div
-              v-for="icon in project.Team"
-              :key="`${icon.id}-data`"
+              v-for="user in project.contributors"
+              :key="`${user.id}-data`"
               class="m-1 flex-4 has-tooltip"
             >
-              <div class="relative flex flex-col items-center group">
-                <div class="w-12 h-12">
+              <div class="relative flex flex-col items-center group cursor-pointer">
+                <!-- <div class="w-12 h-12">
                   <img
                     class="m-1 rounded-full grayscale hover:grayscale-0"
-                    :alt="icon.photo.caption"
-                    :src="icon.photo.url"
+                    :alt="user.name"
+                    :src="`${base}/assets/${user.photo}`"
                   />
-                </div>
-                <div
+                </div> -->
+                <a :href="user.linkedin || '#'" target="_blank">{{  user.name }}</a>
+                <!-- <div
                   class="absolute bottom-0 flex flex-col items-center hidden mb-12 group-hover:flex"
                 >
                   <span
                     class="relative z-10 p-1 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
-                    >{{ icon.photo.caption }}</span
+                    >{{ user.name }}</span
                   >
                   <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -92,7 +81,10 @@
           <br />
           <span class="font-bold">Links</span>
           <div class="flex flex-wrap">
-            <div class="w-8 h-8 m-1 flex-4" v-if="project.github_link && project.open_source">
+            <div
+              class="w-8 h-8 m-1 flex-4"
+              v-if="project.github_link && project.open_source"
+            >
               <a
                 :aria-label="project.github_link"
                 rel="noopener"
@@ -140,18 +132,19 @@ export default {
   },
   async asyncData() {
     const res = await fetch(
-      `${process.env.base}/items/Projects?filter={"status": {"_eq": "Live"}}`,
+      `${process.env.base}/items/Projects?filter={"status": {"_eq": "Live"}}&fields=contributors.*,title,description,subtitle,type,github_link,web_link,skill_used.name&sort=-start`,
       {
         headers: {
           Authorization: `Bearer ${process.env.token}`,
         },
       }
     )
-    const projects = (await res.json()).data
+    var projects = (await res.json()).data
     console.log(projects)
 
     return {
       projects,
+      base: process.env.REST_API_ENDPOINT
     }
   },
 }
