@@ -58,7 +58,20 @@
           </div>
         </button>
       </div>
-      <div style="height:60px;"></div>
+      <div style="height:20px;"></div>
+      
+      <!-- YouTube Subscribe Section -->
+      <div class="text-center mb-8">
+        <div class="text-lg mb-4 font-bold text-gray-700">Subscribe to my Channels</div>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+          <!-- Channel 1: Mexson Fernandes / RoboMex -->
+          <div class="g-ytsubscribe" data-channelid="UC9vlPXQfuWR1NMO2BFBZueQ" data-layout="full" data-count="default"></div>
+          
+          <!-- Channel 2: Kverty Tech -->
+          <div class="g-ytsubscribe" data-channelid="UCpi7JSTvubSyVnsDZR42ZcQ" data-layout="full" data-count="default"></div>
+        </div>
+      </div>
+
       Find me on other websites:
       <div class="grid grid-cols-4 gap-4 lg:grid-cols-10">
         <a
@@ -127,6 +140,13 @@ export default {
           icon: 'quora.svg',
         },
       ],
+    }
+  },
+  head() {
+    return {
+      script: [
+        { src: 'https://apis.google.com/js/platform.js' }
+      ]
     }
   },
   mounted() {
