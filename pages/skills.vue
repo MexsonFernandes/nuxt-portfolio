@@ -1,22 +1,23 @@
 <template>
-  <div class="ml-5">
+  <div class="relative">
     <page-header title="Skills"></page-header>
-    <div v-for="section in skills" :key="`${section.title}-data-outer`">
-      <div class="mb-3 subheading">{{ section.title }}</div>
-      <div class="flex flex-wrap">
-        <div
-          v-for="icon in section.data"
-          :key="`${icon.name}-data-inner`"
-          class="w-12 m-1 flex-4 has-tooltip"
-        >
-          <span class="p-1 -mt-8 bg-gray-100 rounded shadow-lg tooltip">{{
-            icon.name
-          }}</span>
-          <img
-            class="m-1 grayscale hover:grayscale-0"
-            :alt="icon.name"
-            :src="icon.src"
-          />
+    <div class="flex-grow min-h-screen px-4 md:px-10 py-12 bg-white-100">
+      <div v-for="section in skills" :key="`${section.title}-data-outer`" class="mb-10">
+        <h3 class="mb-5 text-2xl font-bold subheading text-gray-800">{{ section.title }}</h3>
+        <div class="flex flex-wrap gap-8">
+          <div
+            v-for="icon in section.data"
+            :key="`${icon.name}-data-inner`"
+            class="flex flex-col items-center group has-tooltip relative cursor-pointer"
+          >
+            <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg whitespace-nowrap z-10 pointer-events-none mb-2">
+              {{ icon.name }}
+              <svg class="absolute text-gray-800 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+            </span>
+            
+            <i :class="`${icon.iconClass} text-5xl transition-transform duration-300 transform group-hover:scale-110`"></i>
+            <span class="mt-2 text-sm font-medium text-gray-600 group-hover:text-black transition-colors">{{ icon.name }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -47,48 +48,44 @@ export default {
     ]
   },
   methods: {
-    createArrayOfIcons(array, names) {
-      const icons = []
-      array.forEach((val, index) => {
-        icons.push({
-          src: val,
-          name: names[index],
-        })
-      })
-      return icons
+    createArrayOfIcons(icons, names) {
+      return icons.map((iconClass, index) => ({
+        iconClass: iconClass,
+        name: names[index],
+      }))
     },
     createTools() {
       const tools = [
-        'https://logo.clearbit.com/nodejs.org',
-        'https://logo.clearbit.com/arduino.cc',
-        'https://res.cloudinary.com/robomx/image/upload/v1597510898/1200px_Git_icon_svg_1bfbb0dbce.png',
-        'https://logo.clearbit.com/androidforums.com',
+        'devicon-nodejs-plain colored',
+        'devicon-arduino-plain colored',
+        'devicon-git-plain colored',
+        'devicon-android-plain colored',
       ]
       const names = ['NodeJS', 'Arduino', 'Git', 'Android']
       return this.createArrayOfIcons(tools, names)
     },
     createFrameworks() {
       const framework = [
-        'https://logo.clearbit.com/djangoproject.com',
-        'https://logo.clearbit.com/ionicframework.com',
-        'https://res.cloudinary.com/robomx/image/upload/v1597510062/145_1450089_python_flask_icon_f4145a896a.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597509936/e6f3204bd34862cd764314637857e193_55d1c91733.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597510161/nuxt_e1b51e3202.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597510589/images_f1434aaeb0.png',
+        'devicon-django-plain colored',
+        'devicon-ionic-original colored',
+        'devicon-flask-original colored',
+        'devicon-angularjs-plain colored',
+        'devicon-nuxtjs-plain colored',
+        'devicon-react-original colored',
       ]
       const names = ['Django', 'Ionic', 'Flask', 'Angular', 'Nuxt', 'React']
       return this.createArrayOfIcons(framework, names)
     },
     createProgramminglang() {
       const lang = [
-        'https://res.cloudinary.com/robomx/image/upload/v1597508167/J_7a14b80727.png',
-        'https://logo.clearbit.com/python.org',
-        'https://res.cloudinary.com/robomx/image/upload/v1597508111/c_programming_569564_af613374f8.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597508581/46140125_da084900_c26d_11e8_8ea7_c45ae6306309_4c0a791b7c.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597508048/java_9dd8229f53.jpg',
-        'https://logo.clearbit.com/dart.dev',
-        'https://res.cloudinary.com/robomx/image/upload/v1597509138/matlab_186726ae80.png',
-        'https://res.cloudinary.com/robomx/image/upload/v1597508768/csharp_01_6dd19d9ab6.png',
+        'devicon-javascript-plain colored',
+        'devicon-python-plain colored',
+        'devicon-c-plain colored',
+        'devicon-cplusplus-plain colored',
+        'devicon-java-plain colored',
+        'devicon-dart-plain colored',
+        'devicon-matlab-plain colored',
+        'devicon-csharp-plain colored',
       ]
 
       const names = [

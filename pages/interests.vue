@@ -1,7 +1,7 @@
 <template>
   <div>
     <page-header
-      title="Interests"
+      title="Field of Interests"
       description="I like to learn about different fields and how their integration would help to create a great solution."
     ></page-header>
 
@@ -63,24 +63,9 @@
 
 <script>
 export default {
-  async asyncData() {
-    const res = await fetch(`${process.env.base}/items/Field_of_Interest`, {
-      headers: { 
-        'Authorization': `Bearer ${process.env.token}`
-      }
-    })
-    const interests = (await res.json()).data
-
-    for (var entry = 0; entry < interests.length; entry++) {
-      interests[entry].image = await (await fetch(`${process.env.base}/assets/${interests[entry].depiction}?download=true`, {
-        headers: { 
-          'Authorization': `Bearer ${process.env.token}`
-        }
-      })).blob()
-    }
-
-    return {
-      interests,
+  computed: {
+    interests() {
+      return this.$store.getters['interests/getInterests']
     }
   },
   mounted() {

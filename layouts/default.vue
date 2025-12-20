@@ -13,7 +13,8 @@
           <div
           @click="navigateTab(tab.route, tab.external)"
             :target="tab.external? '_blank': '_self'"
-            class="cursor-pointer flex flex-row items-center h-12 text-gray-500 transition-transform duration-200 ease-in transform  hover:translate-x-2 hover:text-gray-800"
+            class="cursor-pointer flex flex-row items-center h-12 transition-transform duration-200 ease-in transform"
+            :class="getDesktopActiveTab(index)"
           >
             <span
               class="inline-flex items-center justify-center w-12 h-12 text-lg text-gray-400 "
@@ -180,6 +181,14 @@ export default {
           name: 'Resources',
         },
         {
+          route: '/affiliations',
+          name: 'Affiliations',
+        },
+        {
+          route: '/research',
+          name: 'Research',
+        },
+        {
           route: 'https://blog.mexsonfernandes.com',
           name: 'Blog',
           external: true
@@ -229,6 +238,14 @@ export default {
     },
     hideMenu() {
       this.showHideMenu = false
+    },
+    getDesktopActiveTab(index) {
+        if (
+          this.tabs[index].route.includes(this.$route.name) ||
+          (this.$route.name === 'index' && this.tabs[index].name === 'About')
+        )
+          return 'text-blue-900 bg-blue-100 border-r-4 border-blue-900'
+        else return 'text-gray-500 hover:text-gray-800 hover:translate-x-2'
     },
   },
 }

@@ -1,145 +1,209 @@
 <template>
-  <div>
+  <div class="relative">
     <page-header title="Work"></page-header>
-    <div class="flex-grow min-h-screen px-10 bg-white-100">
-      <div
-        class="text-xs cursor-pointer inline-flex items-center font-bold leading-sm uppercase px-3 py-1 text-white rounded-full mr-2"
-        v-for="type in types"
-        :key="type.name"
-        :class="{ 'animate-pulse': activeFilter === type.name }"
-        :style="`background: ${type.color}`"
-        @click="filterByType(type.name)"
-      >
-        {{ type.name }}
-        &nbsp;<span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-black bg-white rounded-full"> {{ type.count }}</span>
+    <div class="flex-grow min-h-screen px-4 md:px-10 py-12 bg-gray-50">
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-3 mb-10 justify-center">
+        <div
+          class="text-sm cursor-pointer inline-flex items-center font-bold px-4 py-2 text-white rounded-full transition-all duration-300"
+          v-for="type in types"
+          :key="type.name"
+          :class="activeFilter === type.name ? 'ring-4 ring-white ring-opacity-100 shadow-xl scale-110 z-10' : 'shadow-md hover:scale-105 opacity-75 hover:opacity-100'"
+          :style="`background: ${type.color}`"
+          @click="filterByType(type.name)"
+        >
+          {{ type.name }}
+          <span class="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold text-black bg-white rounded-full opacity-90">{{ type.count }}</span>
+        </div>
       </div>
-      <div v-for="project in projects" :key="`${project.id}-data`" class="mt-5">
-        <h3 class="mt-0 text-4xl font-normal leading-normal">
-          {{ project.title }}
-        </h3>
-        <div
-          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 text-white rounded-full"
-          :style="`background: ${getBadgeColor(project.type)}`"
-        >
-          {{ project.type }}
-        </div>
-        <h3 class="mt-0 mb-2 text-2xl font-normal leading-normal">
-          <vue-markdown :source="project.subtitle" />
-        </h3>
-        <div class="markdown">
-          <vue-markdown :source="project.description" />
-        </div>
 
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
-          v-if="
-            project.skill_used &&
-            project.skill_used.length &&
-            project.skill_used.length > 0
-          "
+          v-for="project in projects"
+          :key="project.title"
+          class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden flex flex-col"
         >
-          <br />
-          <span class="font-bold">Tech Stack</span>
-          <div class="flex flex-wrap">
-            <div
-              v-for="badge in project.skill_used"
-              :key="`${badge.name}-data`"
-              class="w-12 m-1 flex-4 has-tooltip"
-            >
-              <div class="relative flex flex-col items-center group">
-                <span
-                  class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
-                  >#{{ badge.name }}</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+          <!-- Card Header / Banner (Optional: You could add a gradient or image here) -->
+          <div class="h-2" :style="`background: ${getBadgeColor(project.type)}`"></div>
 
-        <div
-          v-if="
-            project.contributors &&
-            project.contributors.length &&
-            project.contributors.length > 0
-          "
-        >
-          <br />
-          <span class="font-bold">Team</span>
-          <div class="flex flex-wrap">
-            <div
-              v-for="user in project.contributors"
-              :key="`${user.id}-data`"
-              class="m-1 flex-4 has-tooltip"
-            >
-              <div
-                class="relative flex flex-col items-center group cursor-pointer"
+          <div class="p-6 flex-grow flex flex-col">
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="px-3 py-1 text-xs font-bold text-white rounded-full uppercase tracking-wider"
+                :style="`background: ${getBadgeColor(project.type)}`"
               >
-                <!-- <div class="w-12 h-12">
-                  <img
-                    class="m-1 rounded-full grayscale hover:grayscale-0"
-                    :alt="user.name"
-                    :src="`${base}/assets/${user.photo}`"
-                  />
-                </div> -->
-                <a :href="user.linkedin || '#'" target="_blank">{{
-                  user.name
-                }}</a>
-                <!-- <div
-                  class="absolute bottom-0 flex flex-col items-center hidden mb-12 group-hover:flex"
+                {{ project.type }}
+              </span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-2 leading-tight">
+              {{ project.title }}
+            </h3>
+
+            <div class="text-gray-600 mb-4 flex-grow prose-sm">
+              <vue-markdown :source="project.subtitle || ''" />
+            </div>
+
+            <!-- Tech Stack Preview (Top 3) -->
+            <div class="flex flex-wrap gap-2 mb-6" v-if="project.skill_used && project.skill_used.length">
+              <span
+                v-for="tech in project.skill_used.slice(0, 3)"
+                :key="tech.name"
+                class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-md"
+              >
+                #{{ tech.name }}
+              </span>
+              <span v-if="project.skill_used.length > 3" class="px-2 py-1 text-gray-400 text-xs font-medium">
+                +{{ project.skill_used.length - 3 }} more
+              </span>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+              <button
+                @click="openModal(project)"
+                class="text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm flex items-center group"
+              >
+                View Details
+                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </button>
+
+              <div class="flex space-x-3">
+                <a
+                  v-if="project.github_link"
+                  :href="project.github_link"
+                  target="_blank"
+                  class="text-gray-400 hover:text-gray-800 transition-colors"
+                  title="View Source"
                 >
-                  <span
-                    class="relative z-10 p-1 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
-                    >{{ user.name }}</span
-                  >
-                  <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-                </div> -->
+                  <img src="~/assets/images/icons/github.svg" class="w-5 h-5 grayscale hover:grayscale-0 opacity-70 hover:opacity-100" />
+                </a>
+                <a
+                  v-if="project.web_link"
+                  :href="project.web_link"
+                  target="_blank"
+                  class="text-gray-400 hover:text-blue-600 transition-colors"
+                  title="Visit Website"
+                >
+                  <img src="~/assets/images/icons/link.png" class="w-5 h-5 grayscale hover:grayscale-0 opacity-70 hover:opacity-100" />
+                </a>
               </div>
             </div>
           </div>
         </div>
-
-        <div v-if="project.github_link || project.web_link">
-          <br />
-          <span class="font-bold">Links</span>
-          <div class="flex flex-wrap">
-            <div
-              class="w-8 h-8 m-1 flex-4"
-              v-if="project.github_link && project.open_source"
-            >
-              <a
-                :aria-label="project.github_link"
-                rel="noopener"
-                class="rounded-full"
-                target="_blank"
-                :href="project.github_link"
-                ><img
-                  class="rounded-full grayscale hover:grayscale-0"
-                  src="~/assets/images/icons/github.svg"
-              /></a>
-            </div>
-            <div class="w-8 h-8 m-1 flex-4" v-if="project.web_link">
-              <a
-                :aria-label="project.web_link"
-                rel="noopener"
-                class="rounded-full"
-                target="_blank"
-                :href="project.web_link"
-                ><img
-                  class="rounded-full grayscale hover:grayscale-0"
-                  src="~/assets/images/icons/link.png"
-              /></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-5"></div>
-
-        <hr
-          class="text-2xl text-center border-black"
-          data-hr-content="Title"
-          style="--bg: white; --p: 0 10px; --trans-x: -50%; --trans-y: -50%"
-        />
       </div>
     </div>
+
+    <!-- Project Details Modal -->
+    <transition name="fade">
+      <div v-if="selectedProject" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75 backdrop-blur-sm" @click.self="closeModal">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative animate-scale-in">
+          <!-- Modal Header -->
+          <div class="sticky top-0 bg-white z-10 px-8 py-6 border-b border-gray-100 flex justify-between items-start">
+            <div>
+              <div class="flex items-center space-x-3 mb-2">
+                <h2 class="text-3xl font-bold text-gray-900">{{ selectedProject.title }}</h2>
+                <span
+                  class="px-3 py-1 text-xs font-bold text-white rounded-full uppercase"
+                  :style="`background: ${getBadgeColor(selectedProject.type)}`"
+                >
+                  {{ selectedProject.type }}
+                </span>
+              </div>
+              <div class="text-gray-500 text-lg">
+                <vue-markdown :source="selectedProject.subtitle || ''" />
+              </div>
+            </div>
+            <button @click="closeModal" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+              <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Modal Content -->
+          <div class="px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <!-- Left Column: Description -->
+              <div class="lg:col-span-2 space-y-8">
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                    About Project
+                  </h3>
+                  <div class="markdown prose prose-blue max-w-none text-gray-600">
+                    <vue-markdown :source="selectedProject.description || 'No description available.'" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Sidebar Info -->
+              <div class="space-y-8">
+                <!-- Links -->
+                <div v-if="selectedProject.github_link || selectedProject.web_link" class="bg-gray-50 p-6 rounded-xl">
+                  <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-4">Links</h3>
+                  <div class="space-y-3">
+                    <a
+                      v-if="selectedProject.github_link"
+                      :href="selectedProject.github_link"
+                      target="_blank"
+                      class="flex items-center w-full px-4 py-3 bg-white border border-gray-200 rounded-lg hover:border-black transition-colors group"
+                    >
+                      <img src="~/assets/images/icons/github.svg" class="w-5 h-5 mr-3 opacity-70 group-hover:opacity-100" />
+                      <span class="font-medium text-gray-700 group-hover:text-black">View Source</span>
+                      <svg class="w-4 h-4 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                    <a
+                      v-if="selectedProject.web_link"
+                      :href="selectedProject.web_link"
+                      target="_blank"
+                      class="flex items-center w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+                    >
+                      <img src="~/assets/images/icons/link.png" class="w-5 h-5 mr-3 filter invert brightness-0" />
+                      <span class="font-medium">Visit Website</span>
+                      <svg class="w-4 h-4 ml-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Tech Stack -->
+                <div v-if="selectedProject.skill_used && selectedProject.skill_used.length">
+                  <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">Tech Stacks</h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      v-for="tech in selectedProject.skill_used"
+                      :key="tech.name"
+                      class="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-semibold rounded-full border border-blue-100"
+                    >
+                      {{ tech.name }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Team -->
+                <div v-if="selectedProject.contributors && selectedProject.contributors.length">
+                  <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">Team</h3>
+                  <div class="space-y-3">
+                    <div v-for="user in selectedProject.contributors" :key="user.id" class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                      <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold mr-3">
+                        {{ user.name.charAt(0) }}
+                      </div>
+                      <div>
+                        <p class="font-bold text-gray-900 text-sm">{{ user.name }}</p>
+                        <a v-if="user.linkedin" :href="user.linkedin" target="_blank" class="text-xs text-blue-500 hover:underline">LinkedIn Profile</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -152,69 +216,84 @@ export default {
   },
   data: () => {
     return {
+      activeFilter: 'All',
+      defaultFilterText: 'All',
+      selectedProject: null,
     }
   },
-  async asyncData() {
-    const res = await fetch(
-      `${process.env.base}/items/Projects?filter={"status": {"_eq": "Live"}}&fields=contributors.*,title,description,subtitle,type,github_link,web_link,skill_used.name&sort=-start`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.token}`,
-        },
+  computed: {
+    types() {
+      return this.$store.getters['projects/getTypes']
+    },
+    projects() {
+      const allProjects = this.$store.getters['projects/getProjects']
+      if (this.activeFilter === this.defaultFilterText) {
+        return allProjects
       }
-    )
-    const defaultFilterText = 'All'
-    var projects = (await res.json()).data
-
-    var types = new Set()
-    types.add(defaultFilterText)
-    projects.map((p) => {
-      types.add(p.type)
-    })
-
-    const colors = ['#1e293b', '#06b6d4', '#65a30d', '#6366f1', '#ec4899']
-
-    // create the badges
-    types = Array.from(types)
-    console.log(types)
-    types.map((t, index) => {
-      types[index] = {
-        name: t,
-        color: colors[index],
-        count: t === defaultFilterText ? projects.length : projects.filter(p => p.type === t).length
-      }
-    })
-    console.log(types)
-
-    return {
-      projects,
-      availableList: projects,
-      base: process.env.REST_API_ENDPOINT,
-      types,
-      activeFilter: defaultFilterText,
-      defaultFilterText
+      return allProjects.filter((p) => p.type === this.activeFilter)
     }
   },
   methods: {
     getBadgeColor(name) {
-      return this.types.find((t) => t.name === name).color
+      if (!this.types) return ''
+      return this.types.find((t) => t.name === name)?.color || ''
     },
     filterByType(name) {
       this.activeFilter = name
-      if (name === this.defaultFilterText) {
-        this.projects = this.availableList
-      } else {
-        this.projects = this.availableList.filter((p) => p.type === name)
-      }
     },
+    openModal(project) {
+      this.selectedProject = project
+      document.body.style.overflow = 'hidden' // Prevent scrolling
+    },
+    closeModal() {
+      this.selectedProject = null
+      document.body.style.overflow = '' // Restore scrolling
+    }
   },
+  beforeDestroy() {
+    document.body.style.overflow = ''
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .markdown ul,
 .markdown ol {
   list-style: disc;
-  margin-left: 25px;
+  margin-left: 20px;
+  margin-bottom: 1em;
+}
+.markdown p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+.markdown h1, .markdown h2, .markdown h3 {
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #111827;
+}
+
+/* Modal Animation */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>
