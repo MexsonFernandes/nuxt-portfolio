@@ -1,0 +1,99 @@
+[
+    {
+        "type": "image",
+        "title": "Odoo 2025",
+        "src": "Odoo_2025.jpg"
+    },
+    {
+        "type": "image",
+        "title": "Top 10 in Canacona Taluka",
+        "src": "file007177.jpg"
+    },
+    {
+        "type": "image",
+        "title": "First Marathon",
+        "src": "First Marathon.jpg"
+    },
+    {
+        "type": "image",
+        "title": "college topper",
+        "src": "college topper.jpg"
+    },
+    {
+        "type": "image",
+        "title": "meetup",
+        "src": "meetup.jpg"
+    },
+    {
+        "type": "image",
+        "title": "meetup",
+        "src": "IMG_20190317_134257_815.jpg"
+    },
+    {
+        "type": "image",
+        "title": "meetup",
+        "src": "IMG_20190423_202434_786.jpg"
+    },
+    {
+        "type": "image",
+        "title": "meetup",
+        "src": "IMG_20180427_090121.jpg"
+    },
+    {
+        "type": "group",
+        "name": "BTS Bengaluru 2025",
+        "images": [
+            {
+                "src": "BTS_Bengaluru_2025/1.jpg"
+            },
+            {
+                "src": "BTS_Bengaluru_2025/BTS.webp"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "GITEX Dubai 2025",
+        "images": [
+            {
+                "src": "GITEX_Dubai_2025/IMG_20251013_084053824.jpg"
+            },
+            {
+                "src": "GITEX_Dubai_2025/IMG_20251013_102123890_HDR.jpg"
+            },
+            {
+                "src": "GITEX_Dubai_2025/IMG_20251013_102308983.jpg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Smart India Hackathon Finalist",
+        "images": [
+            {
+                "src": "SIH/IMG_20190601_205623_196.jpg"
+            },
+            {
+                "src": "SIH/IMG_20190601_205623_207.jpg"
+            },
+            {
+                "src": "SIH/SIH.jpg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Smart India Hackathon Finalist",
+        "images": [
+            {
+                "src": "Automatic Arm/IMG_20180412_232000.jpg"
+            },
+            {
+                "src": "Automatic Arm/IMG_20180416_002923.jpg"
+            },
+            {
+                "src": "Automatic Arm/IMG_20180417_081535.jpg"
+            }
+        ]
+    }
+]

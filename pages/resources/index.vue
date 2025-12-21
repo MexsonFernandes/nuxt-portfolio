@@ -99,6 +99,18 @@
             <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed markdown">
                <vue-markdown :source="selectedResource.text" />
             </div>
+
+            <!-- Download Section -->
+            <div v-if="selectedResource.download" class="mt-8 pt-6 border-t border-gray-100 flex justify-end">
+              <a 
+                :href="selectedResource.download" 
+                download
+                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download Resource
+              </a>
+            </div>
           </div>
         </div>
       </div>

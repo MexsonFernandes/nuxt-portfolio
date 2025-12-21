@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      Find me on other websites:
+      Find me on favourite sites:
       <div class="grid grid-cols-4 gap-4 lg:grid-cols-10">
         <a
           v-for="link in links"
@@ -88,20 +88,104 @@
         /></a>
       </div>
       <div style="height:60px;"></div>
-      Are you filling excited reading my profile ? feel free to knock my calendar anytime for a call.
-      <br/><br/>
-      <button data-cal-link="mexsonfernandes/quick-meet" class="inline-flex items-center px-4 py-2 bg-black hover:bg-gray-800 text-white text-sm font-medium rounded-md">
-        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 100.353 100.353" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M32.286,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,43.113,33.115,42.441,32.286,42.441z M30.786,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M55.054,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,43.113,55.882,42.441,55.054,42.441z M53.554,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M77.12,42.441h-9.762c-0.828,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,43.113,77.948,42.441,77.12,42.441z M75.62,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M32.286,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,65.349,33.115,64.677,32.286,64.677z M30.786,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M55.054,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,65.349,55.882,64.677,55.054,64.677z M53.554,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M77.12,64.677h-9.762c-0.828,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,65.349,77.948,64.677,77.12,64.677z M75.62,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M89,13.394h-9.907c-0.013,0-0.024,0.003-0.037,0.004V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994   H56.041V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994H33.025V11.4c0-3.268-2.658-5.926-5.926-5.926   s-5.926,2.659-5.926,5.926v1.995c-0.005,0-0.01-0.001-0.015-0.001h-9.905c-0.829,0-1.5,0.671-1.5,1.5V92.64   c0,0.828,0.671,1.5,1.5,1.5H89c0.828,0,1.5-0.672,1.5-1.5V14.894C90.5,14.065,89.828,13.394,89,13.394z M70.204,11.4   c0-1.614,1.312-2.926,2.926-2.926s2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926s-2.926-1.312-2.926-2.926V11.4z    M50.115,8.474c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926c-1.614,0-2.926-1.312-2.926-2.926v-4.643   c0.004-0.047,0.014-0.092,0.014-0.141s-0.01-0.094-0.014-0.141V11.4C47.189,9.786,48.501,8.474,50.115,8.474z M24.173,11.4   c0-1.614,1.312-2.926,2.926-2.926c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926   c-1.614,0-2.926-1.312-2.926-2.926V11.4z M87.5,91.14H12.753V16.394h8.405c0.005,0,0.01-0.001,0.015-0.001v3.285   c0,3.268,2.659,5.926,5.926,5.926s5.926-2.658,5.926-5.926v-3.283h11.164v3.283c0,3.268,2.659,5.926,5.926,5.926   s5.926-2.658,5.926-5.926v-3.283h11.163v3.283c0,3.268,2.658,5.926,5.926,5.926s5.926-2.658,5.926-5.926V16.39   c0.013,0,0.024,0.004,0.037,0.004H87.5V91.14z"/></g></svg>
-        &nbsp;Schedule meet
-      </button>
+
+      <!-- Global Reach & Reviews Section -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Global Reach</h2>
+        
+        <div class="bg-gray-50 rounded-xl p-4 md:p-8 max-w-4xl mx-auto shadow-inner mb-8">
+          <client-only>
+            <world-map :active-countries="activeCountryCodes" />
+          </client-only>
+          <div class="mt-4 text-center text-sm text-gray-500">
+             Highlighting countries where I have worked with clients.
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button 
+            @click="showReviewsModal = true"
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            See 5-Star Reviews
+          </button>
+        </div>
+      </div>
+
+      <!-- Reviews Modal -->
+      <modal :show="showReviewsModal" @close="showReviewsModal = false">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-gray-900">Client Reviews</h3>
+          <p class="text-gray-500">What people are saying about my work</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div 
+            v-for="review in reviews" 
+            :key="review.id"
+            class="bg-gray-50 p-6 rounded-lg border border-gray-100 relative"
+          >
+             <div class="flex items-center mb-4">
+               <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
+                 {{ getInitials(review.name) }}
+               </div>
+               <div class="ml-3 text-left">
+                 <h4 class="text-sm font-bold text-gray-900">{{ review.name }}</h4>
+                 <div class="flex items-center text-xs text-gray-500">
+                   <span>{{ review.country }}</span>
+                   <span class="mx-1">•</span>
+                   <span class="text-green-600">{{ review.platform }}</span>
+                 </div>
+               </div>
+               <div class="ml-auto flex">
+                  <svg v-for="n in 5" :key="n" class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+               </div>
+             </div>
+             <p class="text-gray-700 text-sm italic text-left">"{{ review.review }}"</p>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <a 
+            href="https://www.fiverr.com/mexsonfernandes" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-green-600 font-semibold hover:underline"
+          >
+            View all 59+ reviews on Fiverr
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+      </modal>
+
+
     </div>
   </div>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+import WorldMap from '~/components/WorldMap.vue'
+import Modal from '~/components/Modal.vue'
+
 export default {
+  components: {
+    'vue-markdown': VueMarkdown,
+    WorldMap,
+    Modal
+  },
+  computed: {
+    reviews() {
+      return this.$store.getters['reviews/getReviews'] || []
+    },
+    activeCountryCodes() {
+      const codes = this.reviews.map(r => r.countryCode.toLowerCase())
+      return [...new Set(codes)]
+    }
+  },
   data: () => {
     return {
+      showReviewsModal: false,
+      hitCounter: `[![HitCount](https://api.mexsonfernandes.com/counter)](https://api.mexsonfernandes.com/counter)`,
       links: [
         {
           src: 'https://www.linkedin.com/in/mexsonfernandes',
@@ -144,9 +228,6 @@ export default {
   },
 
   mounted() {
-    (function (C, A, L) { const p = function (a, ar) { a.q.push(ar); }; const d = C.document; C.Cal = C.Cal || function () { const cal = C.Cal; const ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", {origin:"https://app.cal.com"});
-
     // Load YouTube Subscribe script
     if (window.gapi && window.gapi.ytsubscribe) {
       window.gapi.ytsubscribe.go();
@@ -156,6 +237,12 @@ export default {
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
+    }
+  },
+  methods: {
+    getInitials(name) {
+      if (!name) return '?'
+      return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
     }
   }
 }
