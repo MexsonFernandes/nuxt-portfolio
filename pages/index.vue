@@ -179,6 +179,8 @@ export default {
     },
     activeCountryCodes() {
       const codes = this.reviews.map(r => r.countryCode.toLowerCase())
+      // add missing from review
+      codes.push('ca') // Canada 
       return [...new Set(codes)]
     }
   },
