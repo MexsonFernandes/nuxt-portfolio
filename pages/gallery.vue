@@ -26,7 +26,7 @@
                </div>
                <div>
                   <p class="text-sm font-bold text-gray-900 leading-none">
-                    {{ item.type === 'group' ? formatName(item.name) : 'Gallery Image' }}
+                    {{ item.type === 'group' ? formatName(item.name) : formatName(item.title) }}
                   </p>
                   <p class="text-xs text-gray-400 mt-0.5">
                     {{ item.type === 'group' ? `${item.images.length} Photos` : 'Single Shot' }}

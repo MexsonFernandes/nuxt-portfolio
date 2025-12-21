@@ -25,7 +25,7 @@
         </li>
       </ul>
 
-      <div class="grid place-items-center" v-if="prod">
+      <div class="grid place-items-center">
         <vue-markdown :source="hitCounter"> </vue-markdown>
       </div>
     </div>
@@ -166,7 +166,7 @@ export default {
   },
   data: () => {
     return {
-      hitCounter: `[![HitCount](https://api.mexsonfernandes.com/counter)](https://api.mexsonfernandes.com/counter)`,
+      hitCounter: `[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmexsonfernandes.com&count_bg=%231E40AF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false)](https://hits.seeyoufarm.com)`,
       tabs: [
         {
           route: '/',
