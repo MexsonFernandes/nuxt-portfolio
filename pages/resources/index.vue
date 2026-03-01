@@ -13,13 +13,13 @@
       <!-- Filters -->
       <div class="flex justify-center mb-10 space-x-4">
         <button
-          v-for="type in types"
-          :key="type"
-          @click="activeFilter = type"
+          v-for="year in years"
+          :key="year"
+          @click="activeFilter = year"
           class="px-5 py-2 rounded-full font-bold transition-all duration-300"
-          :class="activeFilter === type ? 'bg-black text-white shadow-lg transform scale-105' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+          :class="activeFilter === year ? 'bg-black text-white shadow-lg transform scale-105' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
         >
-          {{ type }}
+          {{ year }}
         </button>
       </div>
 
@@ -134,16 +134,22 @@ export default {
   },
   computed: {
     resources() {
-      return this.$store.getters['resources/getResources']
+      const res = [...this.$store.getters['resources/getResources']]
+      return res.sort((a, b) => new Date(b.date) - new Date(a.date))
     },
-    types() {
-      return this.$store.getters['resources/getTypes']
+    years() {
+      return this.$store.getters['resources/getYears']
     },
     filteredResources() {
       if (this.activeFilter === 'All') {
         return this.resources
       }
-      return this.resources.filter(r => r.type === this.activeFilter)
+      return this.resources.filter(r => r.date && r.date.startsWith(this.activeFilter))
+    }
+  },
+  created() {
+    if (this.years && this.years.length > 1) {
+      this.activeFilter = this.years[1]
     }
   },
   methods: {

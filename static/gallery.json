@@ -1,5 +1,182 @@
 [
     {
+        "type": "group",
+        "name": "Tech Manthan Talk #2",
+        "images": [
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.15.46 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.16.03 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.16.35 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.16.37 PM (1).jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.16.37 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 2.16.40 PM.jpeg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Tech Manthan Talk #1",
+        "images": [
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 12.24.47 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 12.24.35 PM (1).jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 12.24.38 PM.jpeg"
+            },
+            {
+                "src": "Tech Manthan/WhatsApp Image 2026-03-01 at 12.24.38 PM (1).jpeg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Christmas Crib 2025",
+        "images": [
+            {
+                "src": "Christmas Crib 2025/WhatsApp Image 2026-03-01 at 12.24.46 PM.jpeg"
+            },
+            {
+                "src": "Christmas Crib 2025/WhatsApp Image 2026-03-01 at 12.24.38 PM (4).jpeg"
+            },
+            {
+                "src": "Christmas Crib 2025/WhatsApp Image 2026-03-01 at 12.24.38 PM (2).jpeg"
+            },
+            {
+                "src": "Christmas Crib 2025/WhatsApp Image 2026-03-01 at 12.24.38 PM (3).jpeg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "GTA Progress Cup 2026 Winning team",
+        "images": [
+            {
+                "src": "GTA Progress Cup 2026/628384876_1355778096592647_1987387892758502270_n.jpg"
+            },
+            {
+                "src": "GTA Progress Cup 2026/WhatsApp Image 2026-03-01 at 12.24.40 PM.jpeg"
+            },
+            {
+                "src": "GTA Progress Cup 2026/628120792_1355777943259329_3617798296871502840_n.jpg"
+            },
+            {
+                "src": "GTA Progress Cup 2026/WhatsApp Image 2026-03-01 at 12.24.47 PM.jpeg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "AI Impact Summit 2026, New Delhi",
+        "images": [
+            {
+                "src": "AI Impact Summit 2026/WhatsApp Image 2026-03-01 at 12.24.49 PM.jpeg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_7730.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_7739.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_7776.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_7842.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_7972.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_8052.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_8081.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_8243.jpg"
+            },
+            {
+                "src": "AI Impact Summit 2026/DSC_8343.jpg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Tourism and IT Minister of Goa at AI Impact Summit 2026 New Delhi",
+        "images": [
+            {
+                "src": "IT Minister at AI Impact Summit 2026/DSC_8449.jpg"
+            },
+            {
+                "src": "IT Minister at AI Impact Summit 2026/DSC_8451.jpg"
+            },
+            {
+                "src": "IT Minister at AI Impact Summit 2026/DSC_8495.jpg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Chief Minister of Goa at AI Impact Summit 2026 New Delhi",
+        "images": [
+            {
+                "src": "CM at AI Impact Summit 2026/WhatsApp Image 2026-03-01 at 12.24.42 PM.jpeg"
+            },
+            {
+                "src": "CM at AI Impact Summit 2026/WhatsApp Image 2026-03-01 at 12.24.48 PM.jpeg"
+            },
+            {
+                "src": "CM at AI Impact Summit 2026/WhatsApp Image 2026-03-01 at 12.24.49 PM.jpeg"
+            },
+            {
+                "src": "CM at AI Impact Summit 2026/WhatsApp Image 2026-03-01 at 12.25.55 PM.jpeg"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "name": "Judge at Big Idea Event 2026 (Manovikas School)",
+        "images": [
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 12.24.50 PM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-02-27 at 9.53.52 AM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-02-27 at 9.54.07 AM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 12.24.46 PM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 12.24.51 PM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 2.49.58 PM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 2.49.59 PM.jpeg"
+            },
+            {
+                "src": "Judge at Manovikas School Big Idea Event 2025/WhatsApp Image 2026-03-01 at 2.49.529 PM.jpeg"
+            }
+        ]
+    },
+    {
         "type": "image",
         "title": "Odoo 2025",
         "src": "Odoo_2025.jpg"
