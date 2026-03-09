@@ -1,6 +1,36 @@
 export const state = () => ({
     list: [
         {
+            id: 10,
+            title: "Goa Technology Association wins GIBA Cricket Tournament",
+            description: "The GTA Giants won the cricket tournament organised by the Goa IT Business Association, delivering a dominant performance throughout. Led by Captain Sujeet Shetty, the team won every match and defeated Toshiba by 9 wickets in the final. Strong bowling, impactful batting, and excellent team support powered GTA to a memorable championship victory.",
+            image: "/media/GTA Giants Lift GIBA Cricket Tournament Trophy with Dominant Performance.jpg",
+            link: "https://www.instagram.com/p/DVolbQKCL5R/?igsh=MWY2aWtrcGtheHZvdQ==",
+            source: "Salt TV Goa",
+            date: "8th March 2026",
+            type: "Social Media"
+        },
+        {
+            id: 9,
+            title: "Goa Technology Association wins GIBA Cricket Tournament",
+            description: "The GTA Giants won the cricket tournament organised by the Goa IT Business Association, delivering a dominant performance throughout. Led by Captain Sujeet Shetty, the team won every match and defeated Toshiba by 9 wickets in the final. Strong bowling, impactful batting, and excellent team support powered GTA to a memorable championship victory.",
+            image: "/media/Goa Technology Association wins GIBA Cricket TournamentThe GTA Giants won the cricket tournament.jpg",
+            link: "https://www.instagram.com/p/DVoVnJAjOuf/?igsh=MW0yYnR6bXN0eXZydg==",
+            source: "Goa News Hub GNH",
+            date: "8th March 2026",
+            type: "Social Media"
+        },
+        {
+            id: 8,
+            title: "GTA Giants Win GIBA Corporate Cricket Tournament",
+            description: "",
+            image: "/media/GTA Giants Win GIBA Corporate Cricket Tournament.jpg",
+            link: "https://www.instagram.com/p/DVqQixbCA8c/?igsh=MWt5eDdwd2szbm11Yw==",
+            source: "PBN Bharat",
+            date: "8th March 2026",
+            type: "Social Media"
+        },
+        {
             id: 7,
             title: "Goa Shines at Bengaluru Tech Summit 2025",
             description: "The Goa Technology Association (GTA) represented Goa at the Bengaluru Tech Summit 2025, showcasing the state's growing IT and startup strengths.",
