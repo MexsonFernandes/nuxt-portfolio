@@ -40,6 +40,14 @@ export const state = () => ({
             year: '2025',
             type: 'Community',
             logo: require('~/assets/images/affiliation/apes.jpg')
+        },
+        {
+            id: 5,
+            name: 'Jagriti Digital Yatra',
+            role: 'Yatri',
+            year: '2021',
+            type: 'Community',
+            logo: require('~/assets/images/affiliation/jy-logo.webp')
         }
     ]
 })
