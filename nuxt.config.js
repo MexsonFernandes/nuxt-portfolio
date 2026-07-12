@@ -65,6 +65,9 @@ export default {
   },
 
   build: {
-    transpile: ['@svg-maps/world', 'axios']
+    transpile: ['@svg-maps/world', 'axios'],
+    babel: {
+      compact: true
+    }
   }
 }
