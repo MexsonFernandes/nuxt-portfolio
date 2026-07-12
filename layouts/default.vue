@@ -21,6 +21,13 @@
               ><i :class="tab.icon"></i
             ></span>
             <span class="text-sm font-medium">{{ tab.name }}</span>
+            <span
+              v-if="getTabCount(tab.name)"
+              class="ml-auto mr-4 text-[10px] font-bold px-2 py-0.5 rounded-full"
+              :class="getDesktopActiveTab(index).includes('bg-blue-100') ? 'bg-blue-200 text-blue-800' : 'bg-gray-200 text-gray-500'"
+            >
+              {{ getTabCount(tab.name) }}
+            </span>
           </div>
         </li>
       </ul>
@@ -114,11 +121,20 @@
                 v-for="(tab, index) in tabs"
                 :key="`tab-${index}-mobile`"
                 @click="navigateTab(tab.route, tab.external)"
-                :class="`cursor-pointer block px-3 py-2 text-base font-medium text-white  rounded-md ${getActiveTab(
+                :class="`cursor-pointer flex justify-between items-center px-3 py-2 text-base font-medium rounded-md ${getActiveTab(
                   index
                 )}`"
                 @click.prevent="hideMenu()"
-                >{{ tab.name }}</div
+                >
+                <span>{{ tab.name }}</span>
+                <span
+                  v-if="getTabCount(tab.name)"
+                  class="ml-2 text-[10px] font-bold px-2 py-0.5 rounded-full"
+                  :class="getActiveTab(index).includes('bg-blue-900') ? 'bg-blue-800 text-blue-100' : 'bg-gray-700 text-gray-400'"
+                >
+                  {{ getTabCount(tab.name) }}
+                </span>
+                </div
               >
             </div>
           </div>
@@ -188,11 +204,7 @@ export default {
           name: 'Interests',
           icon: 'bx bx-heart',
         },
-        {
-          route: '/resources',
-          name: 'Resources',
-          icon: 'bx bx-folder',
-        },
+
         {
           route: '/affiliations',
           name: 'Affiliations',
@@ -204,11 +216,6 @@ export default {
           icon: 'bx bx-video',
         },
         {
-          route: '/gallery',
-          name: 'Gallery',
-          icon: 'bx bx-images',
-        },
-        {
           route: '/research',
           name: 'Research',
           icon: 'bx bx-book-open',
@@ -218,6 +225,16 @@ export default {
           name: 'Blog',
           external: true,
           icon: 'bx bx-pencil',
+        },
+        {
+          route: '/gallery',
+          name: 'Gallery',
+          icon: 'bx bx-images',
+        },
+        {
+          route: '/resources',
+          name: 'Resources',
+          icon: 'bx bx-folder',
         },
       ],
       prod: process.env.NODE_ENV === 'production',
@@ -245,6 +262,21 @@ export default {
     Cal("init", {origin:"https://app.cal.com"});
   },
   methods: {
+    getTabCount(name) {
+      try {
+        switch (name) {
+          case 'Work': return this.$store.getters['projects/getProjects']?.length;
+          case 'Research': return this.$store.getters['research/getPapers']?.length;
+          case 'Affiliations': return this.$store.getters['affiliations/getAffiliations']?.length;
+          case 'Resources': return this.$store.getters['resources/getResources']?.length;
+          case 'Media': return this.$store.getters['media/getMedia']?.length;
+          case 'Interests': return this.$store.getters['interests/getInterests']?.length;
+          default: return null;
+        }
+      } catch (e) {
+        return null;
+      }
+    },
     navigateTab(route, external) {
       if (external) {
         window.open(
