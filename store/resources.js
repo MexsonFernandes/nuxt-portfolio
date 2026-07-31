@@ -17,6 +17,33 @@ export const state = () => ({
             type: 'Talks',
             date: '2026-01-30',
             download: 'https://media.mexsonfernandes.com/resources/Empower%20Students%20with%20AI%20Awareness.pdf'
+        },
+        {
+            id: 3,
+            title: 'Beyond the Beep: The Business of AI Voice - PGDM Orientation 2026 #1',
+            subtitle: 'Talk at Srinivassa Sinai Dempo College, Bambolim Goa',
+            text: 'Slides from my recent talk on the business of AI voice, exploring the opportunities and challenges in this rapidly evolving field.',
+            type: 'Talks',
+            date: '2026-07-16',
+            download: 'https://media.mexsonfernandes.com/resources/Business_of_AI_Voice_compressed_compressed.pdf'
+        },
+        {
+            id: 4,
+            title: 'Prompt Engineering Essentials: 10 Skills + AI Research Tools for Students - PGDM Orientation 2026 #2',
+            subtitle: 'Talk at Srinivassa Sinai Dempo College, Bambolim Goa',
+            text: 'Slides from my recent talk on Prompt Engineering Essentials for students, covering 10 essential skills and AI research tools.',
+            type: 'Talks',
+            date: '2026-07-28',
+            download: 'https://media.mexsonfernandes.com/resources/prompt_engineering_essentials_mexson_fernandes.pdf'
+        },
+        {
+            id: 5,
+            title: 'Conversational AI for Business: Build your first AI Voice Concierge - PGDM Orientation 2026 #3',
+            subtitle: 'Workshop at Srinivassa Sinai Dempo College, Bambolim Goa',
+            text: 'Build your first AI Voice Concierge using RetellAI. This workshop is designed for students to learn how to create conversational AI applications for business.',
+            type: 'Workshop',
+            date: '2026-07-31',
+            download: 'https://github.com/MexsonFernandes/retellai-demo-agent'
         }
     ]
 })
