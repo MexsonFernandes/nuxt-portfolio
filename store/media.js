@@ -1,6 +1,16 @@
 export const state = () => ({
     list: [
         {
+            id: 11,
+            title: "BridgeAura Academy: Opening Ceremony & Inauguration",
+            description: "BridgeAura Academy hosted its opening ceremony and inauguration event, marking a significant milestone in the region's educational landscape.",
+            image: "/media/NAVHIND TIMES_KURIOCITY (21.8.2026)_BRIDGEAURA TECH COHORT.jpeg",
+            link: "https://epaper.navhindtimes.in/NewsDetail.aspx?storyid=244440&date=2026-08-21&pageid=1",
+            source: "Navhind Times - Kuriocity",
+            date: "21st August 2026",
+            type: "Newspaper"
+        },
+        {
             id: 10,
             title: "Goa Technology Association wins GIBA Cricket Tournament",
             description: "The GTA Giants won the cricket tournament organised by the Goa IT Business Association, delivering a dominant performance throughout. Led by Captain Sujeet Shetty, the team won every match and defeated Toshiba by 9 wickets in the final. Strong bowling, impactful batting, and excellent team support powered GTA to a memorable championship victory.",
