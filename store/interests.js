@@ -3,51 +3,57 @@ export const state = () => ({
         interests: [{
             id: 1,
             date_created: "2022-12-31T22:14:23.378Z",
-            name: " Machine Learning ",
-            brief: "Have been playing around with algorithms and model params tuning. I am more exposed to deploying the models at prod level. As time passed by my focus changed to creating web applications to deploy work. ",
-            depiction: "bf18d77a-3c17-4e81-a533-8a4145fca50c",
-            icon_link: "https://www.fsm.ac.in/blog/wp-content/uploads/2022/08/ml-e1610553826718.jpg",
-            image: {}
+            name: "Machine Learning",
+            category: "AI & Data Science",
+            brief: "Have been playing around with algorithms and model params tuning. I am more exposed to deploying the models at prod level. As time passed by my focus changed to creating web applications to deploy work.",
+            tags: ["Machine Learning", "Model Deployment", "Algorithms", "NLP"],
+            gradient: "from-indigo-600 via-purple-600 to-pink-500",
+            icon: "ml"
         }, {
             id: 2,
             date_created: "2022-12-31T22:14:56.824Z",
-            name: " Cross Platform Applications",
-            brief: " Started it from my Engineering days. First being the Ionic framework. This was my first dive into mobile applications. Created StayAway app deployed in playstore. ",
-            depiction: "3a808968-230f-4889-9c70-f1574d2ec8ce",
-            icon_link: require('~/assets/images/interest/cross.png'),
-            image: {}
+            name: "Cross Platform Applications",
+            category: "Mobile & Web",
+            brief: "Started it from my Engineering days, first being the Ionic framework. This was my first dive into mobile applications. Created the StayAway app deployed on Play Store.",
+            tags: ["Ionic", "Cross-Platform", "Mobile Apps", "Full Stack"],
+            gradient: "from-cyan-500 via-blue-600 to-indigo-600",
+            icon: "mobile"
         }, {
             id: 3,
             date_created: "2022-12-31T22:15:28.891Z",
-            name: " Internet of Things ",
-            brief: " Arduino is my first hands on in hardware communications. I expanded well with NodeMCU and Raspberry Pi. This tech fascinates me as its more of integrations and I make it happen. ",
-            depiction: "ebc458d2-a3b6-488e-98f8-3fcfe6a4580f",
-            icon_link: "https://live.staticflickr.com/8200/8249565455_9db2524a35_b.jpg",
-            image: {}
+            name: "Internet of Things",
+            category: "Embedded & Hardware",
+            brief: "Arduino is my first hands-on in hardware communications. I expanded well with NodeMCU and Raspberry Pi. This tech fascinates me as it connects physical devices with the cloud.",
+            tags: ["IoT", "Arduino", "Raspberry Pi", "Sensors"],
+            gradient: "from-emerald-500 via-teal-600 to-cyan-600",
+            icon: "iot"
         }, {
             id: 4,
             date_created: "2022-12-31T22:15:54.808Z",
-            name: " Open Source ",
-            brief: "Every application developed by me starts of with OSS. Its quite interesting to look at code and learn. To be honest I hardly look at that. If doc doesn't help than I go to Github issues. ",
-            depiction: "0054940a-ce19-4579-8ebb-c60eb177f0a3",
-            icon_link: "https://res.cloudinary.com/robomx/image/upload/v1634448841/icons8_open_source_150_1a8d257af8.png",
-            image: {}
+            name: "Open Source",
+            category: "Community & Tooling",
+            brief: "Every application developed by me builds upon open-source software. It's fascinating to explore code, learn from community standards, and contribute back to developers globally.",
+            tags: ["Open Source", "GitHub", "Community", "Collaboration"],
+            gradient: "from-amber-500 via-orange-500 to-red-500",
+            icon: "oss"
         }, {
             id: 5,
             date_created: "2022-12-31T22:18:49.733Z",
-            name: "DevOps",
-            brief: "This is in demand due to increase in cloud computing and microservices. I tried learning early during the days of web development and would deploy apps to with automated pipelines. It became my obvious choice in a team of engineers.",
-            depiction: "d77380f4-693c-4d09-bc70-9a5ab579c2ea",
-            icon_link: "https://i.iinfo.cz/images/420/devops-1.jpg",
-            image: {}
+            name: "DevOps & Cloud",
+            category: "Infrastructure & CI/CD",
+            brief: "High demand due to cloud computing and microservices. I learned early to deploy apps with automated CI/CD pipelines, containerization, and reliable infrastructure.",
+            tags: ["DevOps", "CI/CD", "Docker", "Cloud"],
+            gradient: "from-blue-600 via-indigo-600 to-violet-700",
+            icon: "devops"
         }, {
             id: 6,
             date_created: "2023-07-01T12:29:20.993Z",
             name: "Entrepreneurship",
-            brief: "Problem solving through my skill set of tech and having informed decision making based on the market gap excites me to create solutions. I have exposed myself in this through my freelancing journey during college. It was a great experience working internationally with different cultures. ",
-            depiction: "df7c7e88-4717-4549-948a-d7255418940f",
-            icon_link: require('~/assets/images/interest/entrepreneurship.png'),
-            image: {}
+            category: "Startups & Strategy",
+            brief: "Problem solving through tech and making informed decisions based on market gaps excites me to build solutions. I've developed this through my freelance and startup journey internationally.",
+            tags: ["Startups", "Product Strategy", "Market Gap", "Innovation"],
+            gradient: "from-rose-500 via-pink-600 to-purple-600",
+            icon: "entrepreneurship"
         }]
     }]
 })

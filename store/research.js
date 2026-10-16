@@ -25,12 +25,22 @@ export const state = () => ({
         {
             id: 3,
             title: 'A METHOD FOR ALERTING A USER OF A POSSIBILITY OF INFECTION (Pat 594569)',
-            conference: 'Indian Patent Registry (Application No. 202111038746)',
-            year: '2021',
+            shortTitle: 'A Method for Alerting a User of a Possibility of Infection',
+            status: 'Granted',
+            patentNumber: '594569',
+            applicationNumber: '202111038746',
+            publicationNumber: '11/2023',
+            publicationDate: '17/03/2023',
+            filingDate: '26/08/2021',
+            grantDate: '07/07/2026',
+            fieldOfInvention: 'BIO-MEDICAL ENGINEERING',
+            classification: 'G16H0050300000, G08B0021020000, G06F0003048100, G06N0003080000, H04W0004021000',
+            conference: 'Indian Patent Office (App No. 202111038746 | Pat No. 594569)',
+            year: '2026',
             authors: 'Harpreet Singh, Prashant Singh Rana, Neeru Jindal, Mexson Fernandes, Mandeep Singh, Varinder Garg, Harish Kumar and Kanupriya Vashishth',
-            abstract: 'A patent published on August 26, 2021 in the Indian Patent Registry, detailing systems and methods designed for alerting users about the possibility of an infection.',
-            link: '#',
-            tags: ['Healthcare', 'Infection Alert', 'Machine Learning'],
+            abstract: 'A granted patent detailing systems and intelligent machine learning methods for alerting a user to the possibility of an infection, combining biomedical engineering with predictive algorithms.',
+            link: 'https://iprsearch.ipindia.gov.in/PublicSearch/PublicationSearch/PatentDetails',
+            tags: ['Bio-Medical Engineering', 'Healthcare', 'Machine Learning', 'Infection Alert'],
             type: 'Patent'
         }
     ]
@@ -43,5 +53,8 @@ export const getters = {
     getTypes: (state) => {
         const types = new Set(state.list.map(r => r.type).filter(Boolean))
         return ['All', ...types]
+    },
+    getFeaturedPatent: (state) => {
+        return state.list.find(item => item.type === 'Patent')
     }
 }
