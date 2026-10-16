@@ -39,7 +39,7 @@ export const state = () => ({
             year: '2026',
             authors: 'Harpreet Singh, Prashant Singh Rana, Neeru Jindal, Mexson Fernandes, Mandeep Singh, Varinder Garg, Harish Kumar and Kanupriya Vashishth',
             abstract: 'A granted patent detailing systems and intelligent machine learning methods for alerting a user to the possibility of an infection, combining biomedical engineering with predictive algorithms.',
-            link: 'https://iprsearch.ipindia.gov.in/PublicSearch/PublicationSearch/PatentDetails',
+            link: 'https://iprsearch.ipindia.gov.in/RQStatus/PDF_Viewer.aspx?AppNo=MjAyMTExMDM4NzQ2&FullPath=LVBhdGVudENlcnRpZmljYXRlMDctMDctMjAyNi5wZGY=',
             tags: ['Bio-Medical Engineering', 'Healthcare', 'Machine Learning', 'Infection Alert'],
             type: 'Patent'
         }
